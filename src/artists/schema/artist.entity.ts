@@ -1,25 +1,24 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
-import Role from '../../roles/enums/role.enum';
 
-export type UserDocument = User & Document;
+export type ArtistDocument = Artist & Document;
 
 @Schema({ timestamps: true })
-export class User {
+export class Artist {
   _id?: mongoose.ObjectId | string;
 
   @Prop({ required: true, unique: true, lowercase: true })
-  username: string;
+  name: string;
 
   @Prop({ required: true, unique: true, lowercase: true })
-  email: string;
+  spotify_id: string;
 
-  @Prop({ required: true, select: false })
-  password: string;
+  @Prop({ required: true, unique: true, lowercase: true })
+  uri: string;
 
   @Prop({ type: mongoose.Schema.Types.Array })
-  roles: Role[];
+  spotify_albums_ids: string[];
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const ArtistSchema = SchemaFactory.createForClass(Artist);

@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { SpotifyModule } from './spotify/spotify.module';
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SpotifyModule } from './spotify/spotify.module';
     RolesModule,
     AuthModule,
     SpotifyModule,
+    ArtistsModule,
   ],
   controllers: [AppController],
 })
